@@ -23,7 +23,7 @@ class ThemeButton extends StatefulWidget {
       this.elevation = 2,
       required this.text,
       this.bgColor = Colors.black,
-      this.padding = const EdgeInsets.all(10),
+      this.padding = const EdgeInsets.symmetric(vertical: 20),
       this.height = 70,
       this.fontsize = 18,
       this.outlineButton = false,

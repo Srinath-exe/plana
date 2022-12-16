@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plana/Form.dart';
+import 'package:plana/constants/buttons.dart';
 
 import 'package:plana/constants/constants.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -37,29 +38,54 @@ class _HomeScreenState extends State<HomeScreen> {
             });
           },
           boxShadow: [
-            BoxShadow(
-                blurRadius: 20.0,
-                color:
-                    open ? Colors.transparent : Colors.black.withOpacity(0.4))
+            BoxShadow(blurRadius: 20.0, color: Colors.black.withOpacity(0.2))
           ],
           isDraggable: true,
+          backdropEnabled: true,
+          backdropColor: Colors.grey,
           controller: panelController,
-          borderRadius: !open
-              ? const BorderRadius.only(
-                  topLeft: Radius.circular(30), topRight: Radius.circular(30))
-              : const BorderRadius.only(
-                  topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-          minHeight: Config().deviceHeight(context) * 0.8,
-          maxHeight: MediaQuery.of(context).size.height * 0.88,
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(60), topRight: Radius.circular(60)),
+          minHeight: Config().deviceHeight(context) * 0.3,
+          maxHeight: MediaQuery.of(context).size.height * 0.82,
           panel: PlanForm(),
           header: headerui(),
           body: Stack(
-              // alignment: AlignmentDirectional.centerStart,
-              clipBehavior: Clip.none,
-              children: [
-                // slideopen(),
-                !open ? CircleAvatar() : Container(),
-              ]),
+            children: [
+              Positioned(
+                  child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: IconButton(
+                    onPressed: () {}, icon: Icon(Icons.arrow_back_ios_rounded)),
+              )),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      // alignment: AlignmentDirectional.centerStart,
+                      // clipBehavior: Clip.none,
+                      children: [
+                        Image.asset(
+                          "assets/images/plana.png",
+                          width: Config().deviceWidth(context) * 0.4,
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          "Create a New Plan",
+                          style: TextStyle(
+                              color: black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600),
+                        )
+                      ]),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
